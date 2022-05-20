@@ -1,0 +1,52 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConnectCOMOS"
+        mc:Ignorable="d"
+        Title="COMOS数据读取" Height="450" Width="625">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto">
+            </RowDefinition>
+            <RowDefinition Height="Auto">
+            </RowDefinition>
+            <RowDefinition Height="Auto">
+            </RowDefinition>
+            <RowDefinition Height="Auto">
+            </RowDefinition>
+            <RowDefinition Height="Auto">
+            </RowDefinition>
+            <RowDefinition Height="Auto">
+            </RowDefinition>
+            <RowDefinition Height="Auto">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="5,10,0,0" Grid.Row="0" Loaded="StackPanel_Loaded">
+            <Label Content="数据库选择" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23"></Label>
+            <ComboBox Name="txtDBPath" IsEditable="True"  Text="[SQL - SERVER]pt_sql_server" ToolTip="SQL：[SQL - SERVER]pt_sql_server;Access:请直接输入路径" HorizontalAlignment="Left" Height="23" Margin="5,0,0,0"   VerticalAlignment="Top" Width="487"/>
+        </StackPanel>
+
+        <Button Content="启动COMOS连接" Name="ConnectCOMOS" Grid.Row="1" Height="25" Width="200" Margin="0,10,0,10" HorizontalAlignment="Stretch" Click="ConnectCOMOS_Click"></Button>
+        <StackPanel Orientation="Horizontal" Margin="5,10,0,0" Grid.Row="2">
+            <Label Content="项目号"  HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+            <!--<TextBox Name="txtPrjName" ToolTip="" Margin="28,0,0,0" Width="487" />-->
+            <ComboBox Name="txtPrjName" Margin="28,0,0,0" Width="487" SelectionChanged="txtPrjName_SelectionChanged" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5,10,0,0" Grid.Row="3">
+            <Label Content="工作层"  HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="为空则获取项目释放区域数据"></Label>
+            <ComboBox Name="txtWorkingLayerID" ToolTip="" Margin="28,0,0,0" Width="487" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5,10,0,0" Grid.Row="4">
+            <Label Content="QueryPathFullName"  HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+            <TextBox Name="txtQryPath" ToolTip="示例：08UP002\~08UA10\~08U11\~08UP001\~08JA10" Width="430" />
+        </StackPanel>
+
+        <Button Content="获取Query数据" Name="GetQryData" Grid.Row="5" Height="25" Width="200" HorizontalAlignment="Stretch" Margin="0,10,0,0" Click="GetQryData_Click" ></Button>
+        <ScrollViewer  Margin="5,10,0,0" Grid.Row="6" VerticalScrollBarVisibility="Visible" Height="300">
+            <TextBlock Name ="txtMsgInfo"  Text=""  Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" MinHeight="300"  Margin="0,10,0,0" Width="610" Background="#FFD1F7D6" />
+        </ScrollViewer>
+
+    </Grid>
+</Window>
